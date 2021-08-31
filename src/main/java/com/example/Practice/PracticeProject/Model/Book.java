@@ -1,10 +1,11 @@
 package com.example.Practice.PracticeProject.Model;
 
-public class UserModel {
+public class Book {
+
     private int id;
     private String name;
-    private String email;
-    private String Phone_Number;
+    private String descp;
+    private int count;
 
     public int getId() {
         return id;
@@ -22,19 +23,19 @@ public class UserModel {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescp() {
+        return descp;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescp(String descp) {
+        this.descp = descp;
     }
 
-    public String getPhone_Number() {
-        return Phone_Number;
+    public int getCount() {
+        return count;
     }
 
-    public void setPhone_Number(String phone_Number) {
-        Phone_Number = phone_Number;
+    public void setCount(int count) {
+        this.count = count;
     }
 }

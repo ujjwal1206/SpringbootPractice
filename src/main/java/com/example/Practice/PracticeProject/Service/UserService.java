@@ -1,41 +1,57 @@
 package com.example.Practice.PracticeProject.Service;
 
-import com.example.Practice.PracticeProject.Model.UserModel;
+import com.example.Practice.PracticeProject.Model.User;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserService {
-    static List<UserModel> ll=new ArrayList<UserModel>();
-    static UserModel model=new UserModel();
-    static public void addinguser(int id, String name,
-                           String email,String phone){
-        model.setId(id);
-        model.setName(name);
-        model.setEmail(email);
-        model.setPhone_Number(phone);
-        ll.add(model);
+    List<User> userList=new ArrayList<User>();
+    User user=new User();
+    public String addinguser(int id, String name,String email){
+        int flag=0;
+        for(User u:userList){
+            if(u.getEmail().equals(email)){
+                flag=1;
+            }
+        }
+        if(flag==0){
+            user.setId(id);
+            user.setName(name);
+            user.setEmail(email);
+            userList.add(user);
+            return "ADDED SUCCESSFULLY";
+        }
+        else {
+            return "OOPS!! WE CANNOT ADD DUPLICATES";
+        }
     }
-    static public UserModel DisplaydatabyIndex(int index){
-        return ll.get(index);
+    public User DisplaydatabyIndex(int index){
+        return userList.get(index);
     }
-    static public List displaydata(){
-        return ll;
+    public List displaydata(){
+        return userList;
     }
-    static public List updateName(int id,String name){
-        model.setName(name);
-        ll.set(id,model);
-        return ll;
-    }
-    static public List updatedList(int id,String name,String email,String phone){
+    public List updateName(int id,String name){
+        for(User u1:userList){
+            if(u1.getId()==id){
+                u1.setName(name);
+            }
 
-        model.setName(name);
-        model.setEmail(email);
-        model.setPhone_Number(phone);
-        ll.set(id,model);
-        return ll;
+        }
+        return userList;
     }
-    static public void deleteList(int id){
-        ll.remove(id);
+    public List updatedList(int id,String name,String email){
+
+        user.setName(name);
+        user.setEmail(email);
+        userList.set(id,user);
+        return userList;
+    }
+    public void deleteList(int id){
+        userList.remove(id);
     }
 
 }
