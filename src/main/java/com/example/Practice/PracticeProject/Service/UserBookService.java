@@ -64,7 +64,7 @@ public class UserBookService {
     public List delete(int id){
         return UserBookRepository.delete(id);
     }
-    public List updateDate(int id,Date date){
-        return UserBookRepository.updateDate(id,date);
+    public List updateReturn(int id,boolean isreturn){
+        return UserBookRepository.updateReturn(id,isreturn);
     }
 }

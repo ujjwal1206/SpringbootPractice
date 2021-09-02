@@ -18,11 +18,11 @@ public class UserBookRepository {
         userBookMappingList.remove(id);
         return userBookMappingList;
     }
-    public static List updateDate(int id, Date date){
+    public static List updateReturn(int id, boolean isreturn){
         for(UserBookMapping a:userBookMappingList){
             if(a.getBook_id()==id){
-                a.setReturndate(date);
-                a.setIsreturn(false);
+                a.setReturndate(new Date());
+                a.setIsreturn(isreturn);
             }
         }
         return userBookMappingList;

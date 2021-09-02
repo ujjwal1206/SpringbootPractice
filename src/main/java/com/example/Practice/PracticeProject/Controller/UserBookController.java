@@ -25,7 +25,7 @@ public class UserBookController {
         return userBookService.delete(id);
     }
     @PatchMapping("/updatestatus/{id}")
-    public List updatestatus(@PathVariable int id,@RequestParam Date return_date){
-        return userBookService.updateDate(id,return_date);
+    public List updatestatus(@PathVariable int id,@RequestParam boolean isreturn){
+        return userBookService.updateReturn(id,isreturn);
     }
 }
