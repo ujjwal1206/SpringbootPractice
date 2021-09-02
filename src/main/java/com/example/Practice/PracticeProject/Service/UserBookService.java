@@ -13,8 +13,9 @@ import java.util.List;
 
 @Service
 public class UserBookService {
-    UserBookMapping userBookMapping=new UserBookMapping();
+
     public String add(int id, int Userid, int Bookid,boolean isreturn,Date issue_date,Date return_date){
+        UserBookMapping userBookMapping=new UserBookMapping();
         int a=0;
         if(isavailable(Userid,Bookid)){
             userBookMapping.setId(id);
@@ -35,26 +36,21 @@ public class UserBookService {
     }
     public boolean isavailable(int Userid,int Bookid){
         int ua=0;
-        int ba=0;
-        int count = 0;
     for(User u: UserRepository.userList){
         if(u.getId()==Userid){
             ua=1;
             break;
         }
     }
-    for(Book b: BookRepository.bookList){
-        if(b.getId()==Bookid) {
-            if (b.getCount()> 0) {
-                ba = 1;
-                count=b.getCount();
-                break;
+    if(ua==1) {
+        for (Book b : BookRepository.bookList) {
+            if (b.getId() == Bookid) {
+                if (b.getCount() > 0) {
+                    b.setCount(b.getCount() - 1);
+                    return true;
+                }
             }
         }
-    }
-    if(ua==1&&ba==1){
-        count--;
-        return true;
     }
     return false;
     }

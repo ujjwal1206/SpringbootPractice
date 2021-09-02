@@ -24,5 +24,12 @@ public class BookRepository {
         }
         return bookList;
     }
+    static public void updateCount(int bookId){
+        for(Book b:bookList){
+            if(b.getId()==bookId){
+                b.setCount(b.getCount()+1);
+            }
+        }
+    }
 
 }

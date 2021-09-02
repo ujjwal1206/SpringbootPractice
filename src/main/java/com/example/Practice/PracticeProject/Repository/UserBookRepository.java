@@ -20,9 +20,11 @@ public class UserBookRepository {
     }
     public static List updateReturn(int id, boolean isreturn){
         for(UserBookMapping a:userBookMappingList){
-            if(a.getBook_id()==id){
+            if(a.getId()==id){
                 a.setReturndate(new Date());
                 a.setIsreturn(isreturn);
+                BookRepository.updateCount(a.getBook_id());
+                break;
             }
         }
         return userBookMappingList;
