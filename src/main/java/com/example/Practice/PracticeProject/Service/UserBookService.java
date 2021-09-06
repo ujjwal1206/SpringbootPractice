@@ -14,17 +14,17 @@ import java.util.List;
 @Service
 public class UserBookService {
 
-    public String add(int id, int Userid, int Bookid,boolean isreturn,Date issue_date,Date return_date){
+    public String add(UserBookMapping usb1){
         UserBookMapping userBookMapping=new UserBookMapping();
         int a=0;
-        if(isavailable(Userid,Bookid)){
-            userBookMapping.setId(id);
-            userBookMapping.setUser_id(Userid);
-            userBookMapping.setBook_id(Bookid);
-            userBookMapping.setIssuedate(issue_date);
-            if(return_date!=null)
+        if(isavailable(usb1.getUser_id(), usb1.getBook_id())){
+            userBookMapping.setId(usb1.getId());
+            userBookMapping.setUser_id(usb1.getUser_id());
+            userBookMapping.setBook_id(usb1.getBook_id());
+            userBookMapping.setIssuedate(usb1.getIssuedate());
+            if(usb1.getReturndate()!=null)
                 userBookMapping.setReturndate(new Date());
-            if(return_date==null)
+            if(usb1.getReturndate()==null)
                 userBookMapping.setIsreturn(false);
             else
                 userBookMapping.setIsreturn(true);

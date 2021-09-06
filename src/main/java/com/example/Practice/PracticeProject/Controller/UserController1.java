@@ -13,10 +13,9 @@ public class UserController1 {
     //static List<UserModel> ll=new ArrayList<UserModel>();
     @Autowired
     private UserService userService;
-    @PostMapping("/user/add/{id}")
-    String addinguser(@PathVariable int id, @RequestParam String name,
-                           @RequestParam String email){
-        return userService.addinguser(id,name,email);
+    @PostMapping("/user/add")
+    String addinguser(@RequestBody User u){
+        return userService.addinguser(u);
     }
 
     @GetMapping("/user/display/{index}")
@@ -32,8 +31,8 @@ public class UserController1 {
         return userService.updateName(id,name);
     }
     @PutMapping("/user/updateall/{id}")
-    List updatedList(@PathVariable int id,@RequestParam String name,@RequestParam String email){
-        return userService.updatedList(id,name,email);
+    List updatedList(@RequestBody User u){
+        return userService.updatedList(u);
     }
     @DeleteMapping("/user/update/{id]")
     void deleteList(@PathVariable int id){

@@ -11,12 +11,12 @@ import java.util.List;
 @Service
 public class BookService {
 
-    public void addBook(int id,String name,String descrip,int count){
+    public void addBook(Book b){
         Book book=new Book();
-        book.setId(id);
-        book.setName(name);
-        book.setDescp(descrip);
-        book.setCount(count);
+        book.setId(b.getId());
+        book.setName(b.getName());
+        book.setDescp(b.getDescp());
+        book.setCount(b.getCount());
         BookRepository.save(book);
     }
     public List display(){

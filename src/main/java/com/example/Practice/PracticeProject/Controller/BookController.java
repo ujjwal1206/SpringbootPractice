@@ -1,5 +1,6 @@
 package com.example.Practice.PracticeProject.Controller;
 
+import com.example.Practice.PracticeProject.Model.Book;
 import com.example.Practice.PracticeProject.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +12,9 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookService bookService;
-    @PostMapping("/book/add/{id}")
-    public void add(@PathVariable int id, @RequestParam String name,
-                    @RequestParam String descp,@RequestParam int count){
-        bookService.addBook(id,name,descp,count);
+    @PostMapping("/book/add")
+    public void add(@RequestBody Book b){
+        bookService.addBook(b);
     }
     @GetMapping("/book/display/all")
     public List display(){

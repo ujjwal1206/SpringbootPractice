@@ -11,14 +11,15 @@ import java.util.List;
 @Service
 public class UserService {
     //List<User> userList=new ArrayList<User>();
-    public String addinguser(int id, String name,String email){
+    public String addinguser(User u){
         User user=new User();
-            if(isemailavailable(email)){
+            if(isemailavailable(u.getEmail()))
+            {
                 return "OOPS!! WE CANNOT ADD DUPLICATES";
             }
-            user.setId(id);
-            user.setName(name);
-            user.setEmail(email);
+            user.setId(u.getId());
+            user.setName(u.getName());
+            user.setEmail(u.getEmail());
             UserRepository.set(user);
             return "ADDED SUCCESSFULLY";
     }
@@ -46,12 +47,12 @@ public class UserService {
         }
         return UserRepository.updatename();
     }
-    public List updatedList(int id,String name,String email){
+    public List updatedList(User u){
         User user=new User();
-        user.setName(name);
-        user.setEmail(email);
+        user.setName(u.getName());
+        user.setEmail(u.getEmail());
 
-        return UserRepository.update(id,user);
+        return UserRepository.update(u.getId(),user);
     }
     public void deleteList(int id){
         UserRepository.remove(id);

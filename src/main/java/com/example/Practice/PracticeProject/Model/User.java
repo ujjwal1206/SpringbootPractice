@@ -1,5 +1,9 @@
 package com.example.Practice.PracticeProject.Model;
 
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+
 public class User {
     private int id;
     private String name;
