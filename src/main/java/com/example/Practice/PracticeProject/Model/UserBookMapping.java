@@ -1,13 +1,23 @@
 package com.example.Practice.PracticeProject.Model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class UserBookMapping {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column
     private int book_id;
+    @Column
     private int user_id;
+    @Column
     private boolean isreturn;
+    @Column
     private Date issuedate;
+    @Column
     private Date returndate;
 
     public int getId() {

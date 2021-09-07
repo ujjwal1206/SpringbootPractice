@@ -10,9 +10,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class UserController1 {
-    //static List<UserModel> ll=new ArrayList<UserModel>();
     @Autowired
     private UserService userService;
+
     @PostMapping("/user/add")
     String addinguser(@RequestBody User u){
         return userService.addinguser(u);
@@ -22,19 +22,23 @@ public class UserController1 {
     User DisplaydatabyIndex(@PathVariable int index){
         return userService.DisplaydatabyIndex(index);
     }
+
     @GetMapping("/user/display/all")
     List displaydata(){
         return userService.displaydata();
     }
-    @PatchMapping("/user/updatename/{id}")
+
+    @PutMapping("/user/update/name/{id}")
     List updateName(@PathVariable int id,@RequestParam String name){
         return userService.updateName(id,name);
     }
-    @PutMapping("/user/updateall/{id}")
-    List updatedList(@RequestBody User u){
+
+    @PutMapping("/user/update/{id}")
+    String updatedList(@RequestBody User u){
         return userService.updatedList(u);
     }
-    @DeleteMapping("/user/update/{id]")
+
+    @DeleteMapping("/user/delete/{id}")
     void deleteList(@PathVariable int id){
         userService.deleteList(id);
     }

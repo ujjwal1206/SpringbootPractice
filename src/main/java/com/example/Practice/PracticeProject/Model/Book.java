@@ -1,10 +1,18 @@
 package com.example.Practice.PracticeProject.Model;
 
-public class Book {
+import javax.persistence.*;
 
+@Entity
+public class Book {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column
     private String name;
+    @Column
     private String descp;
+    @Column
     private int count;
 
     public int getId() {

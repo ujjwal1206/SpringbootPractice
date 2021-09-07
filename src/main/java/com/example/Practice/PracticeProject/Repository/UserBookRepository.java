@@ -1,32 +1,11 @@
 package com.example.Practice.PracticeProject.Repository;
 
 import com.example.Practice.PracticeProject.Model.UserBookMapping;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserBookRepository {
-    public static List<UserBookMapping> userBookMappingList=new ArrayList<>();
-    public static void set(UserBookMapping ubm){
-        userBookMappingList.add(ubm);
-    }
-    public static List findall(){
-        return userBookMappingList;
-    }
-    public static List delete(int id){
-        userBookMappingList.remove(id);
-        return userBookMappingList;
-    }
-    public static List updateReturn(int id, boolean isreturn){
-        for(UserBookMapping a:userBookMappingList){
-            if(a.getId()==id){
-                a.setReturndate(new Date());
-                a.setIsreturn(isreturn);
-                BookRepository.updateCount(a.getBook_id());
-                break;
-            }
-        }
-        return userBookMappingList;
-    }
+public interface UserBookRepository extends JpaRepository<UserBookMapping,Integer> {
 }

@@ -1,12 +1,17 @@
 package com.example.Practice.PracticeProject.Model;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.*;
 
+@Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int id;
+    @Column
     private String name;
+    @Column
     private String email;
 
     public int getId() {

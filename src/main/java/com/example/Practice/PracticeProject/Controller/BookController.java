@@ -12,20 +12,34 @@ import java.util.List;
 public class BookController {
     @Autowired
     private BookService bookService;
+
     @PostMapping("/book/add")
     public void add(@RequestBody Book b){
         bookService.addBook(b);
     }
+
     @GetMapping("/book/display/all")
     public List display(){
         return bookService.display();
     }
+
+    @GetMapping("/book/display/{id}")
+    public Book displayByid(@PathVariable int id){
+        return bookService.displayByid(id);
+    }
+
     @DeleteMapping("/book/delete/{id}")
-    public List delete(@PathVariable int id){
+    public String delete(@PathVariable int id){
         return bookService.delete(id);
     }
-    @PatchMapping("/book/update/{id}")
-    public List updateByName(@PathVariable int id,@RequestParam String name){
+
+    @PutMapping("/book/update/name/{id}")
+    public List updateName(@PathVariable int id,@RequestParam String name){
         return bookService.updatename(id,name);
+    }
+
+    @PutMapping("/book/update/count/{id}")
+    public List updateCount(@PathVariable int id,@RequestParam int count){
+        return bookService.updateCount(id,count);
     }
 }
